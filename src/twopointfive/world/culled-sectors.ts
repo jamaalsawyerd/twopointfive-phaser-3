@@ -1,3 +1,7 @@
+/**
+ * Sector-based culling: world is split into sectors; only sectors in view (camera angle + FOV) are drawn.
+ * Entities register here and are drawn when their sector is visible. GameState.drawWorld() calls draw().
+ */
 import type { Tile } from './tile.ts';
 import { TileMesh } from './tile.ts';
 import type Renderer from '~/twopointfive/renderer/renderer.ts';
@@ -36,6 +40,7 @@ function sortByZIndex(a: TPFEntity, b: TPFEntity): number {
   );
 }
 
+/** Builds sectors from floor + geometry maps; collectVisibleSectors uses camera pos/angle/fov. */
 class CulledSectors {
   sectorSize: number;
   tilesize: number;

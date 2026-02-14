@@ -1,11 +1,13 @@
+/**
+ * Tile: one quad with UVs from a tileset; used by Map/WallMap for world geometry and by entities for sprites.
+ * TileMesh batches many tiles into one buffer for draw; HudTile is the HUD (ortho) variant.
+ */
 import Quad from '~/twopointfive/renderer/quad.ts';
 import type Renderer from '~/twopointfive/renderer/renderer.ts';
 import type { ImageInfo } from '~/twopointfive/types.ts';
 import type Animation from '~/game/tpf/animation.ts';
 
-/**
- * image: { texture, width, height, textureWidth?, textureHeight?, seamsExpanded? }
- */
+/** Single tile from a tileset image; setTile() updates UVs; seamsExpanded adds 2px spacing. */
 class Tile {
   tile: number;
   scale: number;

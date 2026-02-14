@@ -1,3 +1,6 @@
+/**
+ * Grenade ammo pickup: check() gives ammo to player and kills self. Spawned by MainScene spawnPowerup().
+ */
 import TPFEntity from '~/twopointfive/entity.ts';
 import type { EntityContext } from '~/twopointfive/types.ts';
 

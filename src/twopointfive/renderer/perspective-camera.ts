@@ -1,5 +1,10 @@
+/**
+ * Perspective camera for the 2.5D view. Position/rotation set by EntityPlayer each frame.
+ * World is 2D (x,y); camera stores x,y in position[0],[2] and rotation for look direction (yaw in rotation[1]).
+ */
 import { vec3, mat4 } from 'gl-matrix';
 
+/** View and projection matrices; setPosition/setRotation map game (x,y) into 3D view space. */
 class PerspectiveCamera {
   _projection: mat4;
   _view: mat4;
@@ -19,12 +24,14 @@ class PerspectiveCamera {
     this.depthTest = true;
   }
 
+  /** Game angle (x,y,z) mapped into 3D: yaw ends up in rotation[1]. */
   setRotation(x: number, y: number, z: number): void {
     this.rotation[0] = x;
     this.rotation[1] = z;
     this.rotation[2] = y;
   }
 
+  /** Game (x,y,z) mapped to GL: y stored in position[1], game y in position[2]. */
   setPosition(x: number, y: number, z: number): void {
     this.position[0] = x;
     this.position[1] = z;

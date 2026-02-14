@@ -1,3 +1,7 @@
+/**
+ * WebGL renderer for the 2.5D world: shaders, buffer batching, camera/projection, fog, and draw.
+ * Used by the plugin and GameState.draw(); setCamera() then draw quads (tiles, entities) with the active program.
+ */
 import Program from './program.ts';
 import Quad from './quad.ts';
 import type OrthoCamera from './ortho-camera.ts';

@@ -1,3 +1,7 @@
+/**
+ * Texture helpers. expandSeams() copies a tileset and adds 1px borders between tiles so that
+ * sampling at tile edges doesn't bleed; used when building tilesets for the engine.
+ */
 import type Renderer from './renderer/renderer.ts';
 
 export interface ExpandSeamsResult {

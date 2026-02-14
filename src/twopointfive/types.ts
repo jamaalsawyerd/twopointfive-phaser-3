@@ -1,3 +1,7 @@
+/**
+ * Shared types for the 2.5D engine: vectors, colors, image/tile data, entity context,
+ * collision results, and level JSON shapes. Consumed by entity, game, renderer, and plugin.
+ */
 import type CollisionMap from './collision-map.ts';
 import type CulledSectors from './world/culled-sectors.ts';
 import type Renderer from './renderer/renderer.ts';

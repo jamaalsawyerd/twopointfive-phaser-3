@@ -1,11 +1,14 @@
+/**
+ * Base 2.5D entity: physics (velocity, friction, gravity), collision trace, tile rendering,
+ * and sector culling. Subclassed by game entities (player, enemies, pickups). Movement uses
+ * context.tick (frame delta) so simulation is deterministic per frame.
+ */
 import { Tile } from './world/tile.ts';
 import Animation from '~/game/tpf/animation.ts';
 import type Renderer from './renderer/renderer.ts';
 import type { Vec2, Vec3, AnimSheet, EntityContext, Color, TraceResult } from './types.ts';
 
-/**
- * TPFEntity: standalone 2.5D entity.
- */
+/** Base entity class. TYPE = who to check against; COLLIDES = collision response (PASSIVE = pushed, ACTIVE = pushes). */
 class TPFEntity {
   static _nextId = 1;
 
@@ -94,6 +97,7 @@ class TPFEntity {
     return a;
   }
 
+  /** Velocity update from accel or friction; uses context.tick (frame delta). */
   getNewVelocity(vel: number, accel: number, friction: number, maxVel: number): number {
     if (accel) {
       let v = vel + accel * (this.context.tick || 1 / 60);
@@ -207,6 +211,7 @@ class TPFEntity {
     return !res.collision.x && !res.collision.y;
   }
 
+  /** Physics step: gravity, velocity from accel/friction, trace, then update quad and animation. */
   update(): void {
     const ctx = this.context;
     const collisionMap = ctx.collisionMap;

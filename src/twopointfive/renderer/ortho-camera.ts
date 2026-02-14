@@ -1,5 +1,10 @@
+/**
+ * Orthographic camera for HUD/UI overlay (e.g. weapon sprite). Fixed size; no perspective.
+ * Used by the plugin as hudCamera when drawing the weapon on top of the 2.5D view.
+ */
 import { mat4 } from 'gl-matrix';
 
+/** Ortho projection; view is identity. */
 class OrthoCamera {
   _projection: mat4;
   _view: mat4;

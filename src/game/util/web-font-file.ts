@@ -1,9 +1,10 @@
+/**
+ * Phaser loader file for Google Fonts (webfontloader). Used in preload so HUD text can use a custom font.
+ */
 import Phaser from 'phaser';
 import WebFontLoader from 'webfontloader';
 
-/**
- * Custom Phaser.Loader.File that loads Google Fonts via webfontloader.
- */
+/** Loader file that triggers webfontloader and calls loader.nextFile when fonts are active. */
 class WebFontFile extends Phaser.Loader.File {
   fontNames: string[];
   service: string;

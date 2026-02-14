@@ -1,3 +1,7 @@
+/**
+ * Floor/ceiling tile map: grid of Tile instances, light application, and rect queries.
+ * Created from level layer data; used by CulledSectors for sector geometry. WallMap extends this for walls.
+ */
 import { Tile } from './tile.ts';
 import type { ImageInfo } from '~/twopointfive/types.ts';
 import type LightMap from './light-map.ts';
@@ -5,9 +9,7 @@ import type Animation from '~/game/tpf/animation.ts';
 
 const DEG_TO_RAD = Math.PI / 180;
 
-/**
- * Base map: tilesize, data (2D), tiles (image/tileset with texture), orientation ('floor'|'ceiling'), anims.
- */
+/** Tile grid with tileset; yOffset flips for floor vs ceiling. */
 class Map {
   static fixTileSeams = true;
 

@@ -1,11 +1,11 @@
+/**
+ * Blob enemy: spawner (idle/spawn anim), blob (chases player, damage on touch), and gib particles.
+ * Spawner creates EntityEnemyBlob via factory; blob calls _scene.incrementKillCount() on death. MainScene passes scene and images in spawnBlob().
+ */
 import TPFEntity from '~/twopointfive/entity.ts';
 import TPFTimer from '~/twopointfive/timer.ts';
 import EntityParticle from './particle.ts';
 import type { ImageInfo, EntityContext } from '~/twopointfive/types.ts';
-
-// ---------------------------------------------------------------------------
-// EntityEnemyBlobSpawner
-// ---------------------------------------------------------------------------
 
 class EntityEnemyBlobSpawner extends TPFEntity {
   angle: number;

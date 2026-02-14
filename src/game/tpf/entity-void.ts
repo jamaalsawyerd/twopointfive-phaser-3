@@ -1,3 +1,7 @@
+/**
+ * Placeholder entity: no update, no collision. Used for level entities that only need a position
+ * (e.g. spawn points or markers). Registered in MainScene create().
+ */
 import TPFEntity from '~/twopointfive/entity.ts';
 import type { EntityContext } from '~/twopointfive/types.ts';
 

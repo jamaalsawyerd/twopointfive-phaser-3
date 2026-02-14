@@ -1,3 +1,7 @@
+/**
+ * Player entity: input (keyboard + mouse look), movement, camera, weapon, health. Receives _scene
+ * from MainScene for damage indicator, death anim, and HUD updates. Camera rotation uses _smoothedAngle for smooth turning.
+ */
 import TPFEntity from '~/twopointfive/entity.ts';
 import type Weapon from './weapon.ts';
 import type { EntityContext } from '~/twopointfive/types.ts';
@@ -173,15 +177,16 @@ class EntityPlayer extends TPFEntity {
       if (cursors.stepright.isDown) dx = -1;
     }
 
-    this.internalAngle -= this._mouseDeltaX / 400;
+    this.internalAngle -= this._mouseDeltaX / 400; // sensitivity divisor (pixels to radians)
     this._mouseDeltaX = 0;
 
     this.angle = this.internalAngle;
 
+    // Shortest-path wrap so lerp doesn't spin the long way around -π/π boundary.
     let diff = this.internalAngle - this._smoothedAngle;
     while (diff > Math.PI) diff -= 2 * Math.PI;
     while (diff < -Math.PI) diff += 2 * Math.PI;
-    this._smoothedAngle += diff * Math.min(1, tick * 40);
+    this._smoothedAngle += diff * Math.min(1, tick * 40); // 40 rad/s catch-up for camera
     if (Math.abs(dx) + Math.abs(dy) > 1) {
       dx *= Math.SQRT1_2;
       dy *= Math.SQRT1_2;

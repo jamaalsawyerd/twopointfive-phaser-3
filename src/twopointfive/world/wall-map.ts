@@ -1,3 +1,7 @@
+/**
+ * Wall map: each cell is four quads (top/bottom/left/right) with rotations. Extends Map.
+ * eraseDisconnectedWalls() removes walls not touching floor; used after level load.
+ */
 import Map from './map.ts';
 import { Tile } from './tile.ts';
 import type LightMap from './light-map.ts';

@@ -1,3 +1,7 @@
+/**
+ * WebGL program wrapper: compile vertex/fragment shaders, link, and collect attribute/uniform locations.
+ * Used by Renderer to build the main tile/sprite program from Renderer.Shaders.
+ */
 class Program {
   uniform: Record<string, WebGLUniformLocation | null>;
   attribute: Record<string, number>;

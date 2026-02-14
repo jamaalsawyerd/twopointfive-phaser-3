@@ -1,3 +1,7 @@
+/**
+ * Grenade launcher weapon and grenade/explosion/blast entities. Weapon spawns EntityGrenade on shoot();
+ * grenade bounces, then spawns EntityGrenadeExplosion and EntityBlastRadius. MainScene wires factories and images in create().
+ */
 import Weapon from './weapon.ts';
 import type { WeaponOpts } from './weapon.ts';
 import TPFEntity from '~/twopointfive/entity.ts';
@@ -14,9 +18,7 @@ export interface GrenadeLauncherOpts extends WeaponOpts {
   ) => TPFEntity | ((x: number, y: number, settings: Record<string, unknown>, context: EntityContext) => TPFEntity);
 }
 
-/**
- * WeaponGrenadeLauncher - port of Impact's WeaponGrenadeLauncher.
- */
+/** Grenade launcher: spawns EntityGrenade with angle; depleted() plays empty sound. */
 class WeaponGrenadeLauncher extends Weapon {
   ammoIconImage: ImageInfo | null;
   EntityGrenade: GrenadeLauncherOpts['EntityGrenade'] | null;

@@ -1,8 +1,11 @@
+/**
+ * Tile-based collision for entity movement. trace() returns final position and collision flags;
+ * used by TPFEntity.update() and GameState._separateX/Y. Stepped per-tile for accuracy.
+ * staticNoCollision is a no-op implementation used before a level is loaded.
+ */
 import type { TraceResult, CollisionMapLike } from './types.ts';
 
-/**
- * Tile-based collision map. Faithful port of Impact's ig.CollisionMap.
- */
+/** Tile grid (1 = solid); trace() advances a point by (vx, vy) and reports hits. */
 class CollisionMap {
   tilesize: number;
   data: number[][];
@@ -27,6 +30,7 @@ class CollisionMap {
     this.width = data[0] ? data[0].length : 0;
   }
 
+  /** Advance (x,y) by (vx,vy) in steps of tilesize; return final pos and collision.x/y/slope. */
   trace(x: number, y: number, vx: number, vy: number, objectWidth: number, objectHeight: number): TraceResult {
     const res: TraceResult = {
       collision: { x: false, y: false, slope: false },

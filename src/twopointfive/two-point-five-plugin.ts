@@ -1,3 +1,8 @@
+/**
+ * Phaser integration: scene plugin (scene.tpf) and TpfExtern game object. The plugin loads levels,
+ * runs entity updates with a capped tick, and provides renderToGL for the Extern. MainScene calls
+ * tpf.update(delta) each frame and adds the Extern so the 2.5D world renders inside the Phaser canvas.
+ */
 import Phaser from 'phaser';
 import * as TPF from './index.ts';
 import type { ImageInfo, TilesetInfo, EntityContext } from './types.ts';

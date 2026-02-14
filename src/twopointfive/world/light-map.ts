@@ -1,15 +1,17 @@
+/**
+ * Per-tile lighting: grid of RGB colors from a tileset image. Applied to Map/WallMap tiles and entities.
+ * getLight(tx, ty) used by TPFEntity.updateQuad() for dynamicLight.
+ */
 import type { Color } from '~/twopointfive/types.ts';
 
+/** Pixel data (e.g. from canvas getImageData) for building the light grid. */
 export interface LightMapPixels {
   data: Uint8ClampedArray | number[];
   width?: number;
   height?: number;
 }
 
-/**
- * LightMap: tilesize, data (2D tile indices), imagePixels = { data: Uint8ClampedArray, width, height }.
- * Builds a grid of {r,g,b} from tileset pixel colors (one per tile).
- */
+/** Grid of colors; tile indices in data reference imagePixels samples. */
 class LightMap {
   tilesize: number;
   height: number;

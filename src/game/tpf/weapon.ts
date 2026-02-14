@@ -1,3 +1,7 @@
+/**
+ * Weapon base: HUD sprite, cooldown, ammo, trigger/shoot. Subclass implements shoot().
+ * onAmmoChange notifies the scene for proactive HUD. EntityPlayer holds currentWeapon and calls trigger().
+ */
 import TPFTimer from '~/twopointfive/timer.ts';
 import Animation from './animation.ts';
 import { HudTile } from '~/twopointfive/world/tile.ts';
@@ -20,9 +24,7 @@ export interface WeaponOpts {
   [key: string]: unknown;
 }
 
-/**
- * Weapon base class. Port of Impact's Weapon.
- */
+/** HUD tile, ammo, cooldown (TPFTimer); trigger() decrements ammo and calls shoot() if not depleted. */
 class Weapon {
   offset: { x: number; y: number };
   offsetAngle: number;

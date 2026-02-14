@@ -1,10 +1,11 @@
+/**
+ * Short-lived particle: random initial velocity, lifetime and fade-out (idleTimer), then kill().
+ * Used for blob gibs and explosion debris. Alpha driven by idleTimer.delta(), not ctx.tick.
+ */
 import TPFEntity from '~/twopointfive/entity.ts';
 import TPFTimer from '~/twopointfive/timer.ts';
 import type { EntityContext } from '~/twopointfive/types.ts';
 
-/**
- * EntityParticle -- generic particle with random velocity, lifetime, and fade.
- */
 class EntityParticle extends TPFEntity {
   lifetime: number;
   fadetime: number;

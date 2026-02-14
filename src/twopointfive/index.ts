@@ -1,3 +1,7 @@
+/**
+ * Public API of the 2.5D engine. Re-exports collision, renderer, cameras, world (maps, tiles),
+ * entity, game state, timer, image and util helpers. Consumed by the Phaser plugin and game code.
+ */
 import CollisionMap from './collision-map.ts';
 import Renderer from './renderer/renderer.ts';
 import Quad from './renderer/quad.ts';

@@ -1,10 +1,11 @@
+/**
+ * Health pickup: bounces in z, check() calls player.giveHealth() and kills self. Spawned by MainScene spawnPowerup().
+ */
 import TPFEntity from '~/twopointfive/entity.ts';
 import TPFTimer from '~/twopointfive/timer.ts';
 import type { ImageInfo, EntityContext } from '~/twopointfive/types.ts';
 
-/**
- * EntityHealthPickup -- floating health item that gives health on player contact.
- */
+/** checkAgainst TYPE.A; bounce uses bounceTimer (real time). */
 class EntityHealthPickup extends TPFEntity {
   amount: number;
   _healthImage: ImageInfo | null;

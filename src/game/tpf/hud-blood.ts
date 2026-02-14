@@ -1,5 +1,10 @@
+/**
+ * HUD damage indicator: shows a blood splat that fades out. Uses Phaser tweens so the scene
+ * update loop does not need to drive the fade. MainScene creates one and calls show() from showDamageIndicator().
+ */
 import type Phaser from 'phaser';
 
+/** Options for the blood overlay (view size and fade duration). */
 export interface HudBloodOptions {
   viewWidth?: number;
   viewHeight?: number;

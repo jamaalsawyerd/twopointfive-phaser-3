@@ -1,8 +1,8 @@
 /**
- * Real-time timer matching Impact's ig.Timer semantics.
- * delta() returns negative while counting down, 0 at expiry, positive after.
- * Uses performance.now() as the clock source.
+ * Real-time timer for countdowns and elapsed time. Used by animations, weapons, and entities.
+ * Clock source is performance.now(); independent of game loop delta.
  */
+/** Countdown timer: delta() is negative while counting down, 0 at expiry, positive after. */
 class TPFTimer {
   target: number;
   base: number;

@@ -1,3 +1,8 @@
+/**
+ * Game state: level loading (maps, collision, light, entities), entity spawn/check, and draw.
+ * Plugin and entities hold a reference to the GameState; context (camera, tick, collisionMap, etc.)
+ * is built here and passed to entities. checkEntities() runs after each update for collision/callbacks.
+ */
 import CollisionMap from './collision-map.ts';
 import TPFEntity from './entity.ts';
 import WallMap from './world/wall-map.ts';
@@ -9,6 +14,7 @@ import type PerspectiveCamera from './renderer/perspective-camera.ts';
 import type { CollisionMapLike, LevelData, EntityContext } from './types.ts';
 import type Animation from '~/game/tpf/animation.ts';
 
+/** Injected into GameState and passed to entities; provides renderer, camera, tick, gravity, tilesets. */
 export interface GameContext {
   renderer: Renderer | null;
   camera: PerspectiveCamera | null;
@@ -24,9 +30,7 @@ export interface GameContext {
   horizontalFov?: () => number;
 }
 
-/**
- * Level loader and draw state.
- */
+/** Owns level data, entities, collision/light/maps; runs loadLevel, spawnEntity, checkEntities, draw. */
 class GameState {
   context: GameContext;
   culledSectors: CulledSectors | null;
@@ -163,6 +167,7 @@ class GameState {
     return ent;
   }
 
+  /** Pairwise entity check: call check() when types match (bitwise), then resolve overlap when both collides. */
   checkEntities(): void {
     const COLLIDES = TPFEntity.COLLIDES;
     const ents = this.entities;

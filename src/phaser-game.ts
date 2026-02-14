@@ -1,3 +1,7 @@
+/**
+ * Main Phaser scene: preload, create (level, player, weapon, HUD, input, TpfExtern), and update (input to player, tpf.update, spawn).
+ * Death and damage are proactive (showDeathAnim, HudBlood.show). HUD text is updated via scene callbacks from player/weapon/blob.
+ */
 import Phaser from 'phaser';
 import type { TwoPointFiveScenePlugin } from '~/twopointfive/two-point-five-plugin.ts';
 import { TwoPointFivePlugin } from '~/twopointfive/two-point-five-plugin.ts';
@@ -21,6 +25,7 @@ import type Map from '~/twopointfive/world/map.ts';
 const WIDTH = 640;
 const HEIGHT = 480;
 
+/** Single scene: loads level into tpf, creates player and weapon, HUD, pointer lock, and TpfExtern. */
 export class MainScene extends Phaser.Scene {
   declare tpf: TwoPointFiveScenePlugin;
 

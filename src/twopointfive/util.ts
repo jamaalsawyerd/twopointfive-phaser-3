@@ -1,3 +1,7 @@
+/**
+ * Small helpers used across the engine: angle conversion, clamp, and prototype-based
+ * inheritance (Impact-style). Extends Number.prototype with toRad().
+ */
 const DEG_TO_RAD: number = Math.PI / 180;
 
 function toRad(deg: number): number {
@@ -8,6 +12,7 @@ function limit(v: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, v));
 }
 
+/** Returns a constructor whose instances inherit from proto (Impact-style). */
 function extend(proto: object): new () => object {
   function Ctor(this: object): void {}
   Ctor.prototype = proto;

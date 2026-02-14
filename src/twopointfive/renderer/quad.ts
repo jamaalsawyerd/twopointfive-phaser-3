@@ -1,10 +1,11 @@
+/**
+ * Single quad (two triangles) for tiles and sprites. Vertex buffer layout: pos, uv, color per vertex.
+ * Position/rotation/size changes set _dirty; draw path recalculates and uploads. Used by Tile and HudTile.
+ */
 import { vec3, mat4 } from 'gl-matrix';
 import type { Color, ColorA } from '~/twopointfive/types.ts';
 
-/**
- * Quad: 6 vertices, each with pos (x,y,z), uv (u,v), color (r,g,b,a).
- * 9 floats per vertex * 6 = 54 floats.
- */
+/** 6 vertices, 9 floats each (pos xyz, uv uv, color rgba). */
 class Quad {
   static readonly VERTEX_SIZE = 9;
   static readonly VERTICES = 6;

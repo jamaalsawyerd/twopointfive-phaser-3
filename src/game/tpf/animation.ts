@@ -1,9 +1,10 @@
+/**
+ * Frame-based sprite animation: sequence of tile indices, advanced by real time (TPFTimer).
+ * Used by entities and maps. Independent of ctx.tick so animation rate is wall-clock.
+ */
 import TPFTimer from '~/twopointfive/timer.ts';
 
-/**
- * Frame-based sprite animation. Port of Impact's ig.Animation.
- * Uses TPFTimer (real-time) to advance frames.
- */
+/** Advances frame from timer.delta() / frameTime; tile is the current frame's index. */
 class Animation {
   timer: TPFTimer;
   frameTime: number;
