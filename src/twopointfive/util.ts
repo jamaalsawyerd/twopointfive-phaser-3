@@ -1,0 +1,29 @@
+const DEG_TO_RAD: number = Math.PI / 180;
+
+function toRad(deg: number): number {
+  return deg * DEG_TO_RAD;
+}
+
+function limit(v: number, min: number, max: number): number {
+  return Math.max(min, Math.min(max, v));
+}
+
+function extend(proto: object): new () => object {
+  function Ctor(this: object): void {}
+  Ctor.prototype = proto;
+  return Ctor as unknown as new () => object;
+}
+
+declare global {
+  interface Number {
+    toRad(): number;
+  }
+}
+
+if (typeof Number.prototype.toRad === 'undefined') {
+  Number.prototype.toRad = function (this: number): number {
+    return this * DEG_TO_RAD;
+  };
+}
+
+export { toRad, limit, extend, DEG_TO_RAD };
